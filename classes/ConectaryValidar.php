@@ -38,11 +38,11 @@ class ConectaryValidar
         $validaremail = $result['Email'];
         $validarpass = $result['Contrasenia'];
 
-      if ($validaremail == $email && $validarpass == $password) {
+      if ($validaremail == $email &&  password_verify($password, $validarpass) == true) {
             return true;
       }
 
-      elseif ($validaremail == $email && $validarpass != $password) {
+      elseif ($validaremail == $email && password_verify($password, $validarpass) == false) { // aca no podria decir: $validaremail !== $email || $validarpass != $password
         return false;
       }
 
